@@ -20,5 +20,11 @@ let pDate = new Date();
 console.log(pDate.getMonth());
 console.log(pDate.getSeconds());
 
+pDate.toLocaleString('default', {
+    day: "numeric",
+    hour: 'numeric'
+
+})
+
 
 
