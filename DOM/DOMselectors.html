@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121;color: white;">
+    <div id="container" class="division">
+        Here is some random text
+        <h2 style="border: 1px solid red;" id="heading">Here is some more random text <span style="display: none;">Nothing..</span></h2>
+    </div>
+    <div class="division" style="border: 1px solid blue;" id="second">
+        Here is another div
+    </div>
+    <input type="username" name="" id="abc">
+    <script>
+        let container = document.getElementById('container');
+        let heading = document.getElementById('heading');
+        console.log(container);
+
+        let division = document.getElementsByClassName('division');// It returns an HTMLcollection of all the elements that belong the the 'division' class. An HTMLcollection is an object similar to array, although it doesn't have many methods that are used on array such as forEach(), map(), etc.
+        console.log(division)
+
+        console.log(division[0]); //here we are accessing the first element of the HTMLcollection returned by getElementsByClassName() method.
+        console.log(division[1]);
+
+
+        console.log(container.getAttribute('class')); //We'll get the class name of the 'container', similarly we can get other attributes
+
+        container.setAttribute('style', 'color:lightgreen;'); // This is how we can set a value to an attribue. If that attribute already exists it will overrwrite the value, otherwise it will create a new attribute with that value.
+
+        heading.style.padding = "10px"; //we can use the style property to set/get any desired css style
+        console.log(heading.style.border);
+
+        console.log(heading.innerHTML); //'innerHTML' property holds whatever the code that is written inside 'heading'
+        console.log(heading.innerText);
+        console.log(heading.textContent);
+
+        //'innerText' and 'textContent' holds the text (not the code) that is written inside 'heading'.
+
+        //The main difference between 'innerText' and 'textContent' is that if there's some text written inside some element and it's display property is explicitly set to be 'none', 'innerText' won't include it since it's not being displayed on the webpage. But 'textContent' will include that text regardless. Here the text written inside 'span' which itself lies inside 'heading' is not being displayed (it's display property is set to 'none'), therefore 'innerText' does not include the text written inside 'span' whereas 'textContent' does.
+
+        let second = document.querySelector('#second'); //selecting an element by Id (use of #)
+        let div = document.querySelector('.division'); //selecting an element by class (use of .), it selects the first element taht belongs to that class.
+        let username = document.querySelector('input[type = "username"]'); //selecting an element by type
+
+        console.log(username)
+    </script>
+</body>
+</html>
