@@ -14,6 +14,12 @@
         Here is another div
     </div>
     <input type="username" name="" id="abc">
+    <ul>
+        <li>one</li>
+        <li>two</li>
+        <li>three</li>
+        <li>four</li>
+    </ul>
     <script>
         let container = document.getElementById('container');
         let heading = document.getElementById('heading');
@@ -42,10 +48,17 @@
         //The main difference between 'innerText' and 'textContent' is that if there's some text written inside some element and it's display property is explicitly set to be 'none', 'innerText' won't include it since it's not being displayed on the webpage. But 'textContent' will include that text regardless. Here the text written inside 'span' which itself lies inside 'heading' is not being displayed (it's display property is set to 'none'), therefore 'innerText' does not include the text written inside 'span' whereas 'textContent' does.
 
         let second = document.querySelector('#second'); //selecting an element by Id (use of #)
-        let div = document.querySelector('.division'); //selecting an element by class (use of .), it selects the first element taht belongs to that class.
+        let div = document.querySelector('.division'); //selecting an element by class (use of .), it selects the first element that belongs to that class.
         let username = document.querySelector('input[type = "username"]'); //selecting an element by type
 
         console.log(username)
+
+        let listItems = document.querySelectorAll('li');// it selects all the 'li' elements and return the collection of those elements in the form of a NodeList. A NodeList is an object similar to array, although it doesn't have many methods that are used on arrays. 
+        console.log(listItems);
+        console.log(listItems[0]);
+        listItems[0].style.color = "lightblue";
+
+
     </script>
 </body>
 </html>
