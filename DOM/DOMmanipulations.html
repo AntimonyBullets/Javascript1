@@ -15,7 +15,7 @@
     </div>
     <input type="username" name="" id="abc">
     <ul>
-        <li>one</li>
+        <li id="one">one</li>
         <li>two</li>
         <li>three</li>
         <li>four</li>
@@ -80,7 +80,13 @@
         console.log(unorderedList.lastElementChild); // prints last child element of the parent element 'unorderedList'
 
 
-        let 
+        console.log(heading.parentElement);
+        let one = document.getElementById("one");
+        console.log(one.nextElementSibling);
+
+        console.log(unorderedList.childNodes) // This prints a NodeList of 9 nodes (which are part of the tree structure working in the backend functioning of how html works).
+
+        
 
     </script>
 </body>
