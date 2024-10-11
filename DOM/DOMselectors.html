@@ -53,12 +53,24 @@
 
         console.log(username)
 
-        let listItems = document.querySelectorAll('li');// it selects all the 'li' elements and return the collection of those elements in the form of a NodeList. A NodeList is an object similar to array, although it doesn't have many methods that are used on arrays. 
+        let listItems = document.querySelectorAll('li');// it selects all the 'li' elements and return the collection of those elements in the form of a NodeList. A NodeList is an object similar to array, although it doesn't have many methods that are used on arrays (though it does have forEach() method) 
         console.log(listItems);
         console.log(listItems[0]);
         listItems[0].style.color = "lightblue";
 
+        //Conversion of NodeList and HTMLcollection into array 
+        const listItemArr = Array.from(listItems); // this converts the NodeList 'listItems' into an array
+        let mappedArr = listItemArr.map((element)=>{
+            if(element !== listItemArr[0]){
+                element.style.color = 'orange';
+            }
+        })
 
+        const divisionArr = Array.from(division); // this converts the HTMLcollection 'divisionArr' into an array
+        let filteredArr = divisionArr.filter((element)=>{
+            return element.innerText.length < 20
+        });
+        console.log(filteredArr);
     </script>
 </body>
 </html>
