@@ -27,13 +27,27 @@
 
         function addListItem(langName){
             let li = document.createElement('li');
-            li.appendChild(langName);
+            let newTextNode = document.createTextNode(langName);
+            li.appendChild(newTextNode);
             document.getElementById('unorderedList').appendChild(li);
         }
 
         addListItem("Javascript");
         addListItem("Java");
         addListItem("C++");
+
+        // Editing elements:-
+        const secondItem = document.querySelector('li:nth-child(2)');
+        // secondItem.innerText = "Golang"; // one way to edit the inner text of an element
+        let newText = document.createElement('li')
+        newText.appendChild(document.createTextNode("Golang"));
+        secondItem.replaceWith(newText); //performs editing by replacing the whole element with some other elements
+
+        let firstItem = document.querySelector('li:first-child');
+        firstItem.outerHTML = '<li><a href = "#"> This is a link</a></li>'; //another way to edit whole element by replacing it with some other
+
+        let lastItem = document.querySelector('li:last-child');
+        lastItem.remove(); // removes the element from DOM
     </script>
 </body>
 </html>
