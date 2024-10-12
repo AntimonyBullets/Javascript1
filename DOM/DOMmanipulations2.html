@@ -6,11 +6,34 @@
     <title>Document</title>
 </head>
 <body style="background-color: #212121; color: white;">
-    
+    <ul id="unorderedList">
+        <li>Python</li>
+    </ul>
     <script>
-        let div = document.createElement(div);
+        let div = document.createElement('div'); // to create HTML elements using javascript
         console.log(div);
+        div.style.backgroundColor = "lightblue";
         div.style.border = "1px solid red";
+        div.style.color = "black";
+        div.style.padding = "10px";
+
+        div.setAttribute('class', 'container');// preferred way of setting attributes
+        div.id = 'section';
+
+        const addText = document.createTextNode("This is a text node");
+        div.appendChild(addText); //adds the created text node inside the parent 'div'
+
+        document.body.appendChild(div); //adds 'div' inside parent element 'body'
+
+        function addListItem(langName){
+            let li = document.createElement('li');
+            li.appendChild(langName);
+            document.getElementById('unorderedList').appendChild(li);
+        }
+
+        addListItem("Javascript");
+        addListItem("Java");
+        addListItem("C++");
     </script>
 </body>
 </html>
