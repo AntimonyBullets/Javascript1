@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #outsideBox{
+            width: 140px;
+            height: 70px;
+            border: 1px solid black;
+            background-color: lightblue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 40px 0px;
+            cursor:  pointer;
+        }
+        #insideBox{
+            background-color:coral;
+            width: 70px;
+            height: 35px;
+            border: 1px solid darkblue;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        h1{
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li id = "home">Home</li>
+        <li id="services">Services</li>
+        <li onclick="alert('About is clicked');">About</li> 
+        <!-- One of the ways to work on events is to directly inject the logic into html by listening the event through different attributes such as 'onclick', 'onmouseover' etc. But this should be avoided since there are better ways to listen events in javascript. -->
+         <li id="contact">Contact</li>
+        <li><a href="https://www.youtube.com/">Youtube</a></li>
+
+        <div id="outsideBox">
+            <div id="insideBox">
+                Box
+            </div>
+        </div>
+        <div id="headingBox">
+            <h1 id="heading">This is a heading</h1>
+        </div>
+    </ul>
+    <script>
+        document.getElementById('services').onclick = function (){
+            alert("Services is clicked")
+        } //This again is not the best way to listen to events. The following is the best way to do it.
+
+        document.getElementById('home').addEventListener('click', ()=>{
+            alert("Home is clicked");
+        }, false);
+        // Syntax of addEventListener() --> addEventListener(<eventType>, <function to be performed when the event is listened>, <boolean>), where the third parameter is by default set to false. It is the most preferred way for listening events.
+        
+
+        document.getElementById('contact').addEventListener('mouseover', (e)=>{
+            console.log(e);
+            //Here 'e' is the event object, which has many properties such as 'target' (target points to the html element which is clicked),'toElement', 'srcElement', 'altkey', 'ctrlckey' 'screenX', 'screenY', 'timestamp' etc.
+        })
+
+        // The use of third (boolean) parameter of addEventListener
+
+        document.getElementById('outsideBox').addEventListener('click', ()=>{
+            alert("Outside Box is clicked.")
+        }, false)
+        document.getElementById('insideBox').addEventListener('click', (e)=>{
+            alert("Inside Box is clicked.")
+            // e.stopPropagation(); 
+
+        }, false)
+
+        // In this case since 'insideBox' is inside 'outsideBox', when 'insideBox' is clicked both the events are listened. But the first one to be listened is 'insideBox' and then the event on parent element 'outsideBox' is listened. This concept of listening events starting from the most internal element towards the most external element is known as event bubbling. Here, the stopPropogation() method can be used to stop the bubbling towards the outermost element. THe event in which the stopPropogation() method is used will be the last event to be listened and the bubbling would stop. 
+
+        //If both the boolean values are set to true in the above event listeners. Then the concept of event capturing would take place (which is the opposite of bubbling). The events are handled starting from outermost element towards the innermost element. 
+
+        document.querySelector('h1').addEventListener('click', (e)=>{
+            console.log(e.target.parentNode);
+            console.log(e.target.tagName);
+            console.log(e.target.id);
+        });
+
+    </script>
+</body>
+</html>
