@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="background-color: #412121; color: white;">
+    <h1>Nothing to see here....</h1>
+    <script>
+        const requestUrl = "https://api.github.com/users/AntimonyBullets";
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', requestUrl); //refer to this url --> https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/readyState
+        xhr.onreadystatechange = ()=>{
+            if(xhr.readyState === 4){
+                let responseData = JSON.parse(xhr.responseText);
+                console.log(typeof responseData);
+                console.log(`Name: ${responseData.login}`);
+                console.log(`Id: ${responseData.id}`);
+                console.log(`Following: ${responseData.following}`);
+            }
+        };
+        xhr.send(); //send() has asynchronous nature (just an extra-note)
+    </script>
+</body>
+
+</html>
