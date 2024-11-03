@@ -12,6 +12,7 @@ async function getAllusers() {
 getAllusers();
 
 //fetch() using then()-catch()
-fetch("https://dummyjson.com/c/4952-0acf-4886-adb0").
-then((response)=> response.json()).
-then((response)=> console.log(response));
+fetch("https://dummyjson.com/c/4952-0acf-4886-adb0")
+.then((response)=> response.json())
+.then((response)=> console.log(response))
+.catch((response)=> console.log(response));
