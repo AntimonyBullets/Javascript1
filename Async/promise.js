@@ -29,4 +29,28 @@ let yPromise = new Promise((resolve, reject)=>{
 })
 yPromise.then(function(user){
     console.log(user);
+    // return user.username; // here it is to be noted that returning a value of this function and expecting that using resolve() we can access the value returned by the callback function in then() would not work since resolve() does not return any value. Again the reason can be searched on AI (if needed). The correct way to access the return value is demonstrated in 'zPromise' later in this code.
+});
+
+let zPromise = new Promise((resolve,reject)=>{
+    setTimeout(() => {
+        let error = false; 
+        console.log("Async task 4 is running...")
+        if(!error){
+            resolve({id: 3432, profilename: "Zhukov"});
+        }  
+        else{
+            reject("ERORR: Something went wrong!");
+        }
+    }, 1000);
 })
+
+zPromise.then((user)=>{
+    console.log("The task 4 completed successfully.");
+    return user.profilename; // the returned value can be accessed in another 'then()' method used after this. And this way the chaining can continue as much as we want.
+}).then((profile)=>{
+    console.log(`The profile name is ${profile}`); 
+    // the value returned by previous then() method would be passed as first parameter in the current then(). And after the previous then() is finished executing the current then() would execute.
+}).catch((msg)=>{
+    console.log(msg);
+}).finally(()=> console.log("The promise is either resolved or rejected."))// finally() gets executed regardless of whether the promise is resolved or rejected. But it gets executed only after either of that happens.
