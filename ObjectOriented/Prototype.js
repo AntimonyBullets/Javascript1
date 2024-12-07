@@ -8,5 +8,29 @@ String.prototype.trueLength = function(){
     return this.trim().length;
 }
 
-console.log(xyz.trueLength())
-console.log("   absolute   ".trueLength())
+console.log(xyz.trueLength());
+console.log("   absolute   ".trueLength());
+
+
+//Prototypal inheritance
+
+//Note that multiple inheritance is not directly possible in javascript (though something similar is possible, you can search that on AI if needed)
+const user = {
+    username : "abc",
+    email: "abc@email.com"
+}
+const moderator = {
+    modName: "xyz"
+}
+const GameProfile ={
+    score : 40,
+    tier : "Gold",
+    __proto__: user //inherits the properties of user i.e. the 'GameProfile' object is referencing the 'user' object as it's prototype
+}
+
+// GameProfile.__proto__ = user (this syntax also works)
+
+// Object.setPrototypeOf(GameProfile, moderator); //another syntax
+console.log(GameProfile.username);
+console.log(GameProfile.email);
+
