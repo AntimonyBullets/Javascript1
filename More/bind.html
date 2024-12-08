@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+<body>
+    <button>Button Clicked</button>
+</body>
+<script>
+    class React {
+        constructor(){
+            this.library = "React";
+            this.server = "https://localhost:3000";
+
+            // document.querySelector('button').addEventListener('click', this.handleClick)
+            //In the commented line above, handleClick() function gets executed as the button is clicked, but the values of 'this.library' and 'this.server' are getting printed as 'undefined'. This is because when we used click event listener, the 'this' inside handleClick() started to refer to the element that is clicked, and it no more refers to the current context of class. Therefore, we don't have the access of instance variables inside the method in this case. To resolve this, we use bind().
+
+            document.querySelector('button').addEventListener('click', this.handleClick.bind(this));
+            // Here, using bind(this) ensures that the 'this' inside the 'handleClick' method refers exclusively to the class instance (React) rather than the button element that triggered the event.
+
+        }
+        handleClick(){
+            console.log("button clicked");
+            console.log(this.library);
+            console.log(this.server);
+            console.log(this);
+        }
+
+        //Here an alternative of using bind() is that we can have make the handleClick() an arrow function like this:-
+        // handleClick = ()=>{
+        //     console.log("button clicked");
+        //     console.log(this.library);
+        //     console.log(this.server);
+        //     console.log(this);
+        // }
+    }
+
+    const app = new React()
+</script>
+</html>
